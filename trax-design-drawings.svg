@@ -1,0 +1,825 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1052.3622"
+   height="744.09448"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="trax-design-drawings.svg"
+   inkscape:export-filename="/home/steve/dvo/trax/trax-d1.png"
+   inkscape:export-xdpi="150.01151"
+   inkscape:export-ydpi="150.01151">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow2Mstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Mstart"
+       style="overflow:visible">
+      <path
+         id="path3619"
+         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.6) translate(0,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lstart"
+       style="overflow:visible">
+      <path
+         id="path3595"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Lend"
+       style="overflow:visible;">
+      <path
+         id="path3616"
+         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round;"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(1.1) rotate(180) translate(1,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Mend"
+       style="overflow:visible;">
+      <path
+         id="path3622"
+         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round;"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.6) rotate(180) translate(0,0)" />
+    </marker>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+    <inkscape:perspective
+       id="perspective5825"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.59432113"
+     inkscape:cx="484.97626"
+     inkscape:cy="506.59479"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1000"
+     inkscape:window-height="809"
+     inkscape:window-x="101"
+     inkscape:window-y="104"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-308.2677)">
+    <path
+       id="path5673"
+       d="m 81.751299,946.82869 805.621901,0"
+       style="fill:#552200;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker-end:url(#Arrow2Lend)" />
+    <path
+       style="fill:#552200;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker-end:url(#Arrow2Lend)"
+       d="m 81.751299,613.87794 805.621901,0"
+       id="path3590"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <text
+       sodipodi:linespacing="100%"
+       id="text5675"
+       y="978.04285"
+       x="463.32864"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;font-family:Designer Notes;-inkscape-font-specification:Designer Notes"
+       xml:space="preserve"><tspan
+         style="font-size:32px;fill:#000000;stroke:none"
+         y="978.04285"
+         x="463.32864"
+         id="tspan5677"
+         sodipodi:role="line">Time</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;font-family:Designer Notes;-inkscape-font-specification:Designer Notes"
+       x="463.32864"
+       y="645.0921"
+       id="text4228"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151"><tspan
+         sodipodi:role="line"
+         id="tspan4230"
+         x="463.32864"
+         y="645.0921"
+         style="font-size:32px;fill:#000000;stroke:none">Time</tspan></text>
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 135.26124,946.82869 0,-15.60707"
+       id="path5679" />
+    <path
+       id="path4236"
+       d="m 135.26124,613.87794 0,-15.60707"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 153.84108,946.82869 0,-15.60707"
+       id="path5681" />
+    <path
+       id="path4238"
+       d="m 153.84108,613.87794 0,-15.60707"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 159.78663,946.82869 0,-15.60707"
+       id="path5683" />
+    <path
+       id="path4240"
+       d="m 159.78663,613.87794 0,-15.60707"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 193.23034,946.82869 0,-15.60707"
+       id="path5685" />
+    <path
+       id="path4242"
+       d="m 193.23034,613.87794 0,-15.60707"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 199.17589,946.82869 0,-15.60707"
+       id="path5687" />
+    <path
+       id="path4244"
+       d="m 199.17589,613.87794 0,-15.60707"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 205.86464,946.82869 0,-15.60707"
+       id="path5689" />
+    <path
+       id="path4246"
+       d="m 205.86464,613.87794 0,-15.60707"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 353.76017,946.82869 0,-15.60707"
+       id="path5691" />
+    <path
+       id="path4248"
+       d="m 353.76017,613.87794 0,-15.60707"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 360.44891,946.82869 0,-15.60707"
+       id="path5693" />
+    <path
+       id="path4250"
+       d="m 360.44891,613.87794 0,-15.60707"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 289.10232,946.82869 0,-15.60707"
+       id="path5695" />
+    <path
+       id="path4252"
+       d="m 289.10232,613.87794 0,-15.60707"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 402.06775,946.82869 0,-15.60707"
+       id="path5697" />
+    <path
+       id="path4254"
+       d="m 402.06775,613.87794 0,-15.60707"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 407.27011,946.82869 0,-15.60707"
+       id="path5699" />
+    <path
+       id="path4256"
+       d="m 407.27011,613.87794 0,-15.60707"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 786.29886,946.82869 0,-15.60707"
+       id="path5701" />
+    <path
+       id="path4258"
+       d="m 786.29886,613.87794 0,-15.60707"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 797.44677,946.82869 0,-15.60707"
+       id="path5703" />
+    <path
+       id="path4260"
+       d="m 797.44677,613.87794 0,-15.60707"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 809.33786,946.82869 0,-15.60707"
+       id="path5705" />
+    <path
+       id="path4262"
+       d="m 809.33786,613.87794 0,-15.60707"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 803.39232,946.82869 0,-15.60707"
+       id="path5707" />
+    <path
+       id="path4264"
+       d="m 803.39232,613.87794 0,-15.60707"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 848.72713,946.82869 0,-15.60707"
+       id="path5709" />
+    <path
+       id="path4266"
+       d="m 848.72713,613.87794 0,-15.60707"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 645.09207,946.82869 0,-15.60707"
+       id="path5711" />
+    <path
+       id="path4268"
+       d="m 645.09207,613.87794 0,-15.60707"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 636.91694,946.82869 0,-15.60707"
+       id="path5713" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 635.11787,613.87794 0,-15.60707"
+       id="path5781"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 617.84682,613.87794 0,-15.60707"
+       id="path5783"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 629.48501,946.82869 0,-15.60707"
+       id="path5715" />
+    <path
+       id="path4272"
+       d="m 629.48501,613.87794 0,-15.60707"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 479.35989,946.82869 0,-15.60707"
+       id="path5717" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 479.35989,613.87794 0,-15.60707"
+       id="path5779"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       id="path4274"
+       d="m 495.19169,613.87794 0,-15.60707"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 485.30544,946.82869 0,-15.60707"
+       id="path5719" />
+    <path
+       id="path4276"
+       d="m 485.30544,613.87794 0,-15.60707"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#008000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3, 3;stroke-dashoffset:0"
+       d="m 175.3937,978.04282 0,-130.80208"
+       id="path5721" />
+    <path
+       id="path4301"
+       d="m 175.3937,645.09207 0,-130.80208"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#008000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3, 3;stroke-dashoffset:0"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#008000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3, 3;stroke-dashoffset:0"
+       d="m 368.62404,978.04282 0,-130.80208"
+       id="path5723" />
+    <path
+       sodipodi:nodetypes="cc"
+       style="fill:none;stroke:#800000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3, 3;stroke-dashoffset:0"
+       d="m 485.86831,595.69345 0,-81.40346"
+       id="path5763"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       id="path4303"
+       d="m 629.33452,595.69345 0,-81.40346"
+       style="fill:none;stroke:#800000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3, 3;stroke-dashoffset:0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#008000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3, 3;stroke-dashoffset:0"
+       d="m 396.8654,978.04282 0,-130.80208"
+       id="path5725" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#008000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3, 3;stroke-dashoffset:0"
+       d="m 793.7308,978.04282 0,-130.80208"
+       id="path5727" />
+    <path
+       id="path4307"
+       d="m 793.7308,645.09207 0,-130.80208"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#008000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3, 3;stroke-dashoffset:0"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <text
+       sodipodi:linespacing="100%"
+       id="text5729"
+       y="862.81671"
+       x="184.31203"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:none;font-family:Designer Notes;-inkscape-font-specification:Designer Notes"
+       xml:space="preserve"><tspan
+         y="862.81671"
+         x="184.31203"
+         id="tspan5731"
+         sodipodi:role="line">Arrival</tspan><tspan
+         id="tspan5733"
+         y="886.81671"
+         x="184.31203"
+         sodipodi:role="line">Threshold</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:none;font-family:Designer Notes;-inkscape-font-specification:Designer Notes"
+       x="184.31203"
+       y="529.86597"
+       id="text4309"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151"><tspan
+         sodipodi:role="line"
+         id="tspan4311"
+         x="184.31203"
+         y="529.86597">Arrival</tspan><tspan
+         sodipodi:role="line"
+         x="184.31203"
+         y="553.86597"
+         id="tspan4313">Threshold</tspan></text>
+    <text
+       sodipodi:linespacing="100%"
+       id="text5735"
+       y="862.81671"
+       x="784.86694"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:100%;writing-mode:lr-tb;text-anchor:end;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:none;font-family:Designer Notes;-inkscape-font-specification:Designer Notes"
+       xml:space="preserve"><tspan
+         y="862.81671"
+         x="784.86694"
+         id="tspan5737"
+         sodipodi:role="line">Departure</tspan><tspan
+         id="tspan5739"
+         y="886.81671"
+         x="784.86694"
+         sodipodi:role="line">Cutoff</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:100%;writing-mode:lr-tb;text-anchor:end;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:none;font-family:Designer Notes;-inkscape-font-specification:Designer Notes"
+       x="784.86694"
+       y="529.86597"
+       id="text4315"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151"><tspan
+         sodipodi:role="line"
+         id="tspan4317"
+         x="784.86694"
+         y="529.86597">Departure</tspan><tspan
+         sodipodi:role="line"
+         x="784.86694"
+         y="553.86597"
+         id="tspan4319">Cutoff</tspan></text>
+    <path
+       id="path5741"
+       d="m 176.5738,810.62424 614.85519,0"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1Lstart);marker-end:url(#Arrow2Lend)" />
+    <path
+       sodipodi:nodetypes="cc"
+       id="path5773"
+       d="m 176.5738,477.67349 310.05518,0"
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1Lstart);marker-end:url(#Arrow2Lend)"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1Lstart);marker-end:url(#Arrow2Lend)"
+       d="m 630.62071,477.67349 160.80828,0"
+       id="path4321"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <text
+       sodipodi:linespacing="100%"
+       id="text5743"
+       y="804.31805"
+       x="406.82303"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;font-family:Designer Notes;-inkscape-font-specification:Designer Notes"
+       xml:space="preserve"><tspan
+         y="804.31805"
+         x="406.82303"
+         id="tspan5745"
+         sodipodi:role="line">Timecard Interval</tspan></text>
+    <text
+       sodipodi:linespacing="100%"
+       id="text5775"
+       y="471.36731"
+       x="290.50009"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;font-family:Designer Notes;-inkscape-font-specification:Designer Notes"
+       xml:space="preserve"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151"><tspan
+         y="471.36731"
+         x="290.50009"
+         id="tspan5777"
+         sodipodi:role="line">Interval 1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;font-family:Designer Notes;-inkscape-font-specification:Designer Notes"
+       x="666.78949"
+       y="471.36731"
+       id="text4701"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151"><tspan
+         sodipodi:role="line"
+         id="tspan4703"
+         x="666.78949"
+         y="471.36731">Interval 2</tspan></text>
+    <path
+       sodipodi:nodetypes="cssc"
+       id="path5747"
+       d="m 290.58871,907.43943 c 0,0 -1.97344,-82.03501 4.45916,-74.31937 4.38896,5.26437 12.6343,17.09345 10.77631,1.48639 -2.11584,-17.77298 -0.3716,-69.86021 -0.3716,-69.86021"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1Lstart)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1Lstart)"
+       d="m 289.86908,584.56346 c 0,0 -2.69306,-49.65179 3.73954,-41.93615 4.38896,5.26437 16.95206,11.33644 15.09407,-4.27062 -2.11584,-17.77298 3.22653,-25.24333 3.22653,-25.24333"
+       id="path4705"
+       sodipodi:nodetypes="cssc"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <path
+       sodipodi:nodetypes="csc"
+       id="path5749"
+       d="m 358.21933,905.20984 c 0,0 1.48639,-77.29214 -16.35026,-63.91465 -17.83664,13.37749 -24.89698,-76.92054 -24.89698,-76.92054"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1Lstart)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1Lstart)"
+       d="m 353.90157,583.0535 c 0,0 -12.18653,-49.94631 -30.02318,-36.56882 -17.83664,13.37749 -13.38294,-33.02328 -13.38294,-33.02328"
+       id="path5089"
+       sodipodi:nodetypes="csc"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151" />
+    <text
+       sodipodi:linespacing="100%"
+       id="text5751"
+       y="758.86639"
+       x="286.69241"
+       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000080;stroke:none;font-family:Designer Notes;-inkscape-font-specification:Designer Notes"
+       xml:space="preserve"><tspan
+         style="font-size:24px;fill:#000080;stroke:none"
+         y="758.86639"
+         x="286.69241"
+         id="tspan5753"
+         sodipodi:role="line">blips</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000080;stroke:none;font-family:Designer Notes;-inkscape-font-specification:Designer Notes"
+       x="292.44943"
+       y="509.3924"
+       id="text5281"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151"><tspan
+         sodipodi:role="line"
+         id="tspan5283"
+         x="292.44943"
+         y="509.3924"
+         style="font-size:24px;fill:#000080;stroke:none">blips</tspan></text>
+    <text
+       sodipodi:linespacing="100%"
+       id="text5755"
+       y="848.46149"
+       x="412.00552"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:none;font-family:Designer Notes;-inkscape-font-specification:Designer Notes"
+       xml:space="preserve"><tspan
+         y="848.46149"
+         x="412.00552"
+         id="tspan5757"
+         sodipodi:role="line">mid-Breaks</tspan></text>
+    <text
+       sodipodi:linespacing="100%"
+       id="text5767"
+       y="516.56177"
+       x="489.67999"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#800000;fill-opacity:1;fill-rule:evenodd;stroke:none;font-family:Designer Notes;-inkscape-font-specification:Designer Notes"
+       xml:space="preserve"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151"><tspan
+         y="516.56177"
+         x="489.67999"
+         id="tspan5769"
+         sodipodi:role="line">out-</tspan><tspan
+         id="tspan5771"
+         y="540.56177"
+         x="489.67999"
+         sodipodi:role="line">Hint</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:100%;writing-mode:lr-tb;text-anchor:end;fill:#800000;fill-opacity:1;fill-rule:evenodd;stroke:none;font-family:Designer Notes;-inkscape-font-specification:Designer Notes"
+       x="625.78894"
+       y="515.51074"
+       id="text5285"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/home/steve/dvo/trax/trax-d3.png"
+       inkscape:export-xdpi="150.01151"
+       inkscape:export-ydpi="150.01151"><tspan
+         sodipodi:role="line"
+         id="tspan5287"
+         x="625.78894"
+         y="515.51074">in-</tspan><tspan
+         sodipodi:role="line"
+         x="625.78894"
+         y="539.51074"
+         id="tspan5765">Hint</tspan></text>
+    <path
+       id="path5759"
+       d="m 374.16829,872.63528 59.90896,-19.96966"
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;marker-start:url(#Arrow2Mstart)" />
+    <path
+       id="path5761"
+       d="M 400.44415,894.70701 444.5876,853.71666"
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow2Mstart)" />
+    <rect
+       ry="3.6709359"
+       rx="6.2774472"
+       y="149.98056"
+       x="363.33575"
+       height="34.542114"
+       width="67.644951"
+       id="rect5791"
+       style="fill:#81ff81;fill-opacity:1;fill-rule:evenodd;stroke:#800000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+    <rect
+       ry="3.6709359"
+       rx="6.2774472"
+       y="195.31712"
+       x="363.33575"
+       height="34.542114"
+       width="67.644951"
+       id="rect5793"
+       style="fill:#00c000;fill-opacity:1;fill-rule:evenodd;stroke:#800000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+    <rect
+       ry="3.6709359"
+       rx="6.2774472"
+       y="242.09288"
+       x="363.33575"
+       height="34.542114"
+       width="67.644951"
+       id="rect5795"
+       style="fill:#689868;fill-opacity:1;fill-rule:evenodd;stroke:#800000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+    <rect
+       ry="3.6709359"
+       rx="6.2774472"
+       y="149.98056"
+       x="450.17075"
+       height="34.542114"
+       width="67.644951"
+       id="rect5797"
+       style="fill:#bc81ff;fill-opacity:1;fill-rule:evenodd;stroke:#800000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+    <rect
+       style="fill:#7f6898;fill-opacity:1;fill-rule:evenodd;stroke:#800000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect5801"
+       width="67.644951"
+       height="34.542114"
+       x="450.17075"
+       y="242.09288"
+       rx="6.2774472"
+       ry="3.6709359" />
+    <rect
+       style="fill:#8b8989;fill-opacity:1;fill-rule:evenodd;stroke:#800000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect5803"
+       width="67.644951"
+       height="34.542114"
+       x="276.98047"
+       y="149.98056"
+       rx="6.2774472"
+       ry="3.6709359" />
+    <rect
+       style="fill:#ff8181;fill-opacity:1;fill-rule:evenodd;stroke:#800000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect5805"
+       width="67.644951"
+       height="34.542114"
+       x="538.92474"
+       y="149.98056"
+       rx="6.2774472"
+       ry="3.6709359" />
+    <rect
+       style="fill:#c00000;fill-opacity:1;fill-rule:evenodd;stroke:#800000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect5807"
+       width="67.644951"
+       height="34.542114"
+       x="538.92474"
+       y="195.31712"
+       rx="6.2774472"
+       ry="3.6709359" />
+    <rect
+       style="fill:#986868;fill-opacity:1;fill-rule:evenodd;stroke:#800000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect5809"
+       width="67.644951"
+       height="34.542114"
+       x="538.92474"
+       y="242.09288"
+       rx="6.2774472"
+       ry="3.6709359" />
+    <rect
+       style="fill:#81ffff;fill-opacity:1;fill-rule:evenodd;stroke:#800000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect5811"
+       width="67.644951"
+       height="34.542114"
+       x="623.84076"
+       y="149.98056"
+       rx="6.2774472"
+       ry="3.6709359" />
+    <rect
+       style="fill:#00bdc0;fill-opacity:1;fill-rule:evenodd;stroke:#800000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect5813"
+       width="67.644951"
+       height="34.542114"
+       x="623.84076"
+       y="195.31712"
+       rx="6.2774472"
+       ry="3.6709359" />
+    <rect
+       style="fill:#40c04f;fill-opacity:1;fill-rule:evenodd;stroke:#800000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect5815"
+       width="67.644951"
+       height="34.542114"
+       x="623.84076"
+       y="242.09288"
+       rx="6.2774472"
+       ry="3.6709359" />
+    <rect
+       ry="3.6709359"
+       rx="6.2774472"
+       y="242.09288"
+       x="623.84076"
+       height="34.542114"
+       width="67.644951"
+       id="rect5799"
+       style="fill:#689898;fill-opacity:1;fill-rule:evenodd;stroke:#800000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+    <rect
+       style="fill:#5a00c0;fill-opacity:1;fill-rule:evenodd;stroke:#800000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect5785"
+       width="67.644951"
+       height="34.542114"
+       x="450.17075"
+       y="195.31712"
+       rx="6.2774472"
+       ry="3.6709359" />
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;font-family:Designer Notes;-inkscape-font-specification:Designer Notes"
+       x="274.36145"
+       y="128.09995"
+       id="text5787"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan5789"
+         x="274.36145"
+         y="128.09995">Presence State Colors</tspan></text>
+  </g>
+</svg>

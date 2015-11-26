@@ -1,0 +1,2 @@
+?package(castkeep):needs="X11|text|vc|wm" section="Applications/Office"\
+  title="CastKeep Staff Manager" command="/usr/bin/castkeep-gui"

@@ -1,0 +1,384 @@
+#!/usr/bin/perl -w
+#
+# trax BlueTooth presence detection service.
+# Run this as a low priority service out of /etc/init.d or other "normal" way.
+#
+#  Copyright 2011 by Steve Roscio.  All Rights Reserved.
+
+use strict;
+use warnings;
+use lib 'pkg/usr/share/perl5';
+use Config::Std;
+use Getopt::Long qw/:config no_ignore_case/;
+use Pod::Usage;
+use POSIX 'setsid';
+use trax;
+use trax::db;
+use Term::Emit qw/:all/;
+use Time::HiRes qw/sleep/;
+$| = 1;
+my $TRAX;    # Global info
+
+# Command line options
+my $opts = {};
+#<<<
+GetOptions($opts, "help|h", 
+                  "config-file=s", 
+                  "logfile|o=s",
+                  "nodaemon|D",
+                  "station-id|s=i", 
+                  "verbose|v")
+    or pod2usage(2);
+#>>>
+pod2usage(1) if $opts->{help};
+my $logfile = $opts->{logfile} || '/var/log/trax/trax-btpresence.log';
+my $station_id = $opts->{"station-id"} || 0;
+my $station_type = 'BlueTooth';
+
+# I'm a daemon, you're a daemon, we're a daemon, you can be a daemon too... :-)
+if (!$opts->{'nodaemon'}) {
+    if (my $dpid = daemonize($logfile)) {
+        print "Daemonized as PID $dpid\n";
+        exit 0;
+    }
+}
+
+# Config file
+emit "Loading configuration";
+emit_text "from " . ($opts->{'config-file'} || $CONFIG_FILE) if $opts->{verbose};
+eval {read_config $opts->{'config-file'} || $CONFIG_FILE => $TRAX->{cfg};};
+exit emit_fail {reason => "Configuration file problem: $@"} if $@;
+foreach my $section (keys %{$TRAX->{cfg}}) {
+    foreach my $key (keys %{$TRAX->{cfg}->{$section}}) {
+        $TRAX->{cfg}->{$section}->{$key} =~ s/\s* (?<!\\) \# .*? $//x;    # Decomment line
+    }
+}
+my $partition = $TRAX->{cfg}->{bt}->{partition} || '-none-';
+my $deblip    = $TRAX->{cfg}->{bt}->{deblip}    || 60;
+emit_ok;
+
+# Show our settings
+if ($opts->{verbose}) {
+    emit_text "Settings:";
+    emit_text "  Station Id:     $station_id";
+    emit_text "  Station Type:   $station_type";
+    emit_text "  Partition Time: $partition";
+    emit_text "  De-blip:        $deblip s";
+}
+
+# Are we already running? (TODO:  verify that our /etc/init.d script already does this check for us)
+emit "Check if we're already running";
+mkdir('/var/run/trax'); # For first time after each boot
+my $pidfile = '/var/run/trax/trax-btpresence.pid';
+if (-e $pidfile) {
+    emit "PID file found, checking";
+    open(PF, $pidfile)
+        or exit emit_fail {reason => "Cannot read PID file $pidfile: $!"};
+    my $pid = <PF> || q{};
+    close PF;
+    chomp $pid;
+    $pid = int($pid);
+    exit emit_fail {reason => "Another instance already running as $pid"}
+        if $pid && kill(0, $pid);
+    emit_ok;
+}
+open(PF, '>', $pidfile)
+    or exit emit_fail {reason => "Cannot create our PID file $pidfile: $!"};
+print PF $$;
+close PF;
+emit_ok;
+
+# Connect to database
+emit "Database Init";
+my $db = new trax::db;
+$db->connect($TRAX->{cfg}->{dbb});
+exit emit_error {reason => "Unable to connect to database: " . $db->error()}
+    if $db->error();
+$db->setup();
+exit emit_error {reason => "Unable to setup database: " . $db->error()}
+    if $db->error();
+emit_ok;
+
+# Load MAC addresses
+emit "Loading MAC addresses";
+my $recs = $db->select("SELECT btmAddr,usrId FROM btmacs");
+exit emit_error {reason => "Error loading MAC addresses: " . $db->error()}
+    if $db->error();
+exit emit_error {reason => "No MAC addresses defined - nothing for me to scan!"}
+    if !@$recs;
+my $macs = {};
+foreach my $rec (@$recs) {
+    my $btaddr = lc($rec->{btmAddr}) || q{};
+    my $usrId = $rec->{usrId};
+    emit_text "Duplicate MAC address $btaddr" if exists $macs->{$btaddr};
+    emit_text "Empty MAC address for user ID $usrId" if !$btaddr;
+    $macs->{$btaddr} = $usrId;
+    emit_text "$btaddr for user $usrId" if $opts->{verbose};
+}
+emit_prog scalar(keys %$macs) . " loaded";
+emit_ok;
+
+my $imac  = 0;
+my @kmacs = sort keys %$macs;
+sub nextmac {my $mac = $kmacs[$imac++]; $imac %= @kmacs; return $mac;}
+### TODO:  add mac-in-use flag and undef return if none avail to above
+
+# Load radios
+emit "Discovering radios";
+my @radios = ();
+my %rmacs  = ();
+foreach my $line (qx/hcitool dev/) {
+    next unless $line =~ m/\s(\S+)\s+(\S+)/;
+    my ($dev, $rmac) = ($1, $2);
+    emit_text "Duplicate radio MAC $rmac for device $dev" if exists $rmacs{$rmac};
+    emit_text "$dev\t$rmac" if $opts->{verbose};
+    push @radios, $dev;
+    $rmacs{$rmac}++;
+}
+exit emit_fail {reason => "No radios available for use"} unless @radios;
+emit_prog scalar(@radios) . " radios found";
+emit_ok;
+
+my %dev_in_use = ();
+my %dev_finds  = ();    # Count of finds per device
+
+sub nextdev {
+    for my $dev (@radios) {return $dev if !$dev_in_use{$dev}}
+    return undef;
+}
+
+# Setup handlers for clean exit
+my $RUN = 1;
+$SIG{HUP}  = \&catch_cleanup_signal;
+$SIG{INT}  = \&catch_cleanup_signal;
+$SIG{TERM} = \&catch_cleanup_signal;
+
+# Scan loop
+emit "Scanning";
+emit_text "I am PID $$";
+my $nscans  = 0;     # Number of scans done
+my %handles = ();    # File handles tied to child probes, indexed by device
+my %results = ();    # Results by MAC address
+while ($RUN) {
+
+    # Write status
+    my $statfile = '/var/run/trax/trax-btpresence.status';
+
+    # Any free radios?
+    my $radio = nextdev();
+    if ($radio) {
+
+        # Tiny delay do give the radio a "breather"
+        sleep 0.3;
+
+        # Use this radio to query for the next MAC address (if any)
+        my $mac = nextmac();
+        if ($mac) {
+            $nscans++;
+            $dev_in_use{$radio} = $mac;
+            $results{$mac} ||= {};
+            $results{$mac}->{err}     = q{};
+            $results{$mac}->{scandev} = $radio;
+            $results{$mac}->{found}   = 0 if !defined $results{$mac}->{found};
+            $results{$mac}->{response}  ||= q{};
+            $results{$mac}->{whenblip}  ||= 0;    # time when last blipped, this interval
+            $results{$mac}->{whenfound} ||= 0;    # time when first found, this interval
+            $results{$mac}->{lastfound} ||= 0;    # time last found; it could have been supressed
+            $results{$mac}->{lasthint}  ||= q{};  # blip hint in effect the last time thru
+            open($handles{$radio}, "hcitool -i $radio name $mac 2>&1 |")
+                || die "*** open fork() failed: $!\n";
+        }
+    }
+
+    # Check the filehandle of each device for a response
+    my $read_some = 0;
+    my $bliphint = bliphint();
+    foreach my $dev (@radios) {
+        next unless $handles{$dev};
+        my $fn = fileno($handles{$dev});
+        next unless $fn;                          # Skip closed handles
+        my $rin = my $win = q{};
+        vec($rin, $fn, 1) = 1;
+        my $ein = $rin;
+        if (select($rin, $win, $ein, 0)) {
+            $read_some++;
+            my $response = q{};
+            sysread($handles{$dev}, $response, 255);
+            chomp $response;
+            chomp $response;                      #twice
+            my $mac = $dev_in_use{$dev};
+            ### emit_text "  $dev $mac is $response";    ### TEMP
+            my $err = q{};
+            close $handles{$dev}
+                or $err = "*** Bad hcitool: $! $?";
+            my $found = !$err && $response;
+            $handles{$dev}    = undef;
+            $dev_in_use{$dev} = 0;
+            $dev_finds{$dev}++ if $found;
+
+            # Got a blip - go thru suppression logic to see if we record it
+            ### TODO:  Suppress 'gone' events unless we get a few in a row, then backblip it.
+            ###  test data shows spurious 'dropouts' (misses) that should be ignored too.
+            my $now       = time();
+            my $lasthint  = $results{$mac}->{lasthint};
+            my $lastfound = $results{$mac}->{lastfound};
+            my $whenfound = $results{$mac}->{whenfound};
+            my $whenblip  = $results{$mac}->{whenblip};
+            my $ifirst    = $found && !$lastfound;         # First of this interval
+            my $midblip
+                = $found && $lastfound && (($now - $whenblip) >= $deblip); # Not-suppressed mid-blip
+            my $gone     = !$found && $lastfound;                          # Did it disappear?
+            my $backblip = $gone   && ($whenblip < $lastfound);            # Record last known?
+            my $hintdiff = $bliphint ne $lasthint;                         # Hint change?
+
+            if ($ifirst || $midblip || $backblip || ($hintdiff && $found)) {
+
+                # We'll record it
+                my $btime = $found ? $now : $lastfound;
+                my $usrId = $macs->{$mac};
+                $results{$mac}->{whenblip} = $btime;
+                ### TODO:  check how to do auto-reconnect of D/B if conn is lost
+                #<<<
+                $db->insert( "INSERT INTO blips SET"
+                           . " blipTime=" . $db->quote(dbtime($btime))
+                           . ",usrid="    . $db->quote($usrId)
+                           . ",stnId="    . $db->quote($station_id)
+                           . ",stntype="  . $db->quote($station_type)
+                           . ",blipHint=" . $db->quote($bliphint)
+                );
+                #>>>
+                exit emit_fail {reason => "Cannot insert blip: " . $db->error()}
+                    if $db->error();
+                if ($opts->{verbose}) {
+                    my $bh = lc(substr($bliphint, 0, 1));
+                    my $flags = q{};
+                    $flags .= "f" if $ifirst;
+                    $flags .= "m" if $midblip;
+                    $flags .= "k" if $backblip;
+                    emit_text "t$btime [$dev] $bh blip ($flags) $mac user $usrId";
+                }
+            }
+            elsif ($found && $opts->{verbose}) {
+                my $usrId = $macs->{$mac};
+                emit_text "t" . time() . " [$dev] supr (-) $mac user $usrId";
+            }
+
+            # Update results
+            $results{$mac}->{lasthint}  = $bliphint;
+            $results{$mac}->{lastfound} = $found ? $now : 0;
+            $results{$mac}->{whenfound} = $found ? ($results{$mac}->{whenfound} || $now) : 0;
+            $results{$mac}->{changed} = ($results{$mac}->{found} xor $found)
+                || ($found && ($results{$mac}->{response} ne $response));
+            $results{$mac}->{found}    = $found;
+            $results{$mac}->{err}      = $err;
+            $results{$mac}->{scandev}  = q{};
+            $results{$mac}->{response} = $response if $response;
+
+        }
+    }
+
+    # If we didn't do anything on this pass, then wait a bit
+    sleep 1.3 if !$radio && !$read_some;
+}
+emit_done;
+
+# Cleanup - write out any last suppressed blips
+emit "Cleanup";
+foreach my $mac (keys %results) {
+    next if !$results{$mac}->{found};
+    next if !$results{$mac}->{lastfound};
+    next if $results{$mac}->{whenblip} == $results{$mac}->{lastfound};
+
+    my $usrId = $macs->{$mac};
+    my $btime = $results{$mac}->{lastfound};
+    #<<<
+    $db->insert( "INSERT INTO blips SET"
+               . " blipTime=" . $db->quote(dbtime($btime))
+               . ",usrid="    . $db->quote($usrId)
+               . ",stnId="    . $db->quote($station_id)
+               . ",stntype="  . $db->quote($station_type)
+               ### TODO: . ",blipHint=" ??? How to get this?
+    );
+    #>>>
+    exit emit_fail {reason => "Cannot insert blip: " . $db->error()}
+        if $db->error();
+    if ($opts->{verbose}) {
+        emit_text "t$btime blip (z) $mac user $usrId";
+    }
+}
+
+emit_done;
+exit 0;
+
+# get blip hint (### TODO: how can we make this more efficient?)
+sub bliphint {
+    open (BH, '<', '/var/run/trax/bliphint')
+        or return 'none';
+    my $hint = <BH>;
+    close BH;
+    return 'none' if $hint =~ m/^n/i;
+    return 'out'  if $hint =~ m/^o/i;
+    return 'in';
+}
+
+# Signal handler
+sub catch_cleanup_signal {
+    $RUN = 0;
+}
+
+# Make ourselves into a daemon process
+sub daemonize {
+    my $logfile = shift || '/dev/null';
+    chdir '/' or die "Can't chdir to /: $!";
+    open STDIN, '/dev/null' or die "Can't read /dev/null: $!";
+    open STDOUT, '>', $logfile
+        or die "Can't write to $logfile: $!";
+    defined(my $pid = fork) or die "Can't fork: $!";
+    return $pid if $pid;
+    setsid or die "Can't start a new session: $!";
+    open STDERR, '>&STDOUT' or die "Can't dup stdout for stderr: $!";
+    return 0;
+}
+
+# Database time string (ISO8660)
+sub dbtime {
+    my $t = shift;
+    my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime($t);
+    return sprintf '%4.4d-%2.2d-%2.2d %2.2d:%2.2d:%2.2d',
+        1900 + $year, $mon + 1, $mday, $hour, $min, $sec;
+}
+
+__END__
+
+=head1 NAME
+
+trax-btpresence - Bluetooth Device Presence scanner
+
+=head1 SYNOPSIS
+
+ trax-btpresence [options]
+
+ Options:
+  -c    --config-file   Use this config file instead of /etc/trax/trax.conf
+  -D    --nodaemon      Do not daemonize (the default); useful for debugging
+  -h    --help          Usage summary
+  -o    --logfile       Logfile for STDOUT and STDERR when a daemon
+  -s    --station-id    My station ID number
+  -v    --verbose       More verbose output
+
+=head1 DESCRIPTION
+
+A trax utility, usually run as a service, that scans for known bluetooth devices
+as a way to tell if a user is present (by checking for the presence of their
+cell phone, for example).  It creates or updates the user's timeclock record
+in the trax database.
+
+Normally this script will daemonize itself.  To have it run in the current 
+process context, specify --nodaemon (or -D).
+
+=head1 Signals
+
+To trigger a clean shutdown of this service, send it a SIGHUP (kill -1...).
+
+=cut
+

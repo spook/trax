@@ -1,0 +1,11 @@
+From the traxp/pkg directory, do this:
+
+  # reset; dh clean; dpkg-buildpackage -b
+
+To install/upgrade:
+
+  # sudo dpkg -i ../trax_0.1_all.deb
+
+Or, combine and also filter those stupid "levels before 5" warnings:
+
+  # reset; dh clean; dpkg-buildpackage -b 2>&1|grep -v 'levels before 5'; sudo dpkg -i ../trax_0.1_all.deb

@@ -1,0 +1,2 @@
+From the pkg directory, like this:
+  perl -I usr/share/perl5/ usr/bin/trax-roster -c etc/trax/trax.conf 

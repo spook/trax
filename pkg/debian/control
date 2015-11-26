@@ -1,0 +1,30 @@
+Source:  	trax
+Section: 	office
+Priority: 	optional
+Maintainer: 	Steve Roscio [steve@HauntedMines.org]
+Homepage: 	http://HauntedMines.org
+Build-Depends: 	debhelper (>= 5)
+Standards-Version: 3.7.2
+
+Package: 	trax
+Architecture: 	all
+Essential: 	no
+Depends: 	libtk-perl, 
+ libcrypt-ssleay-perl, 
+ libconfig-std-perl,
+ libdbi-perl, 
+ libdbd-mysql-perl
+Pre-Depends: perl, mysql-server, mysql-client
+Recommends: libterm-emit-perl
+Provides: trax
+Description: Time tracking and staff manager system.
+ .
+ "trax" is a staff time tracking (punch clock), scheduling,
+ and management system.  It started as a way to record volunteer (staff)
+ arrival and departure times akin to a punch-clock system.  It includes
+ a staff directory system to manage the names, addresses, photos, email,
+ and roles for staff members.  It also includes a simple scheduling 
+ system.  An innovative Bluetooth detector is included to automatically
+ detect when staff members arrive and depart (with their permission, 
+ of course).
+

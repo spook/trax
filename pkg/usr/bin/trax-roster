@@ -1,0 +1,461 @@
+#!/usr/bin/perl -w
+use strict;
+use warnings;
+use lib 'pkg/usr/share/perl5';
+use Config::Std;
+use Getopt::Long;
+use Pod::Usage;
+use POSIX qw(strftime);
+use trax;
+use trax::db;
+use trax::style;
+use trax::time;
+use Term::Emit qw/:all/;
+use Time::HiRes qw/sleep/;
+use Time::Local;
+use Tk;
+use Tk::TableMatrix;
+
+$| = 1;
+my $TRAX;    # Global info
+$TRAX->{mode_hint} = "In";
+
+# Command line options
+my $opts = {};
+#<<<
+GetOptions($opts, "help|h", 
+                  "config-file=s", 
+                  "verbose|v")
+    or pod2usage(2);
+#>>>
+pod2usage(1) if $opts->{help};
+
+# User edit fields etc...
+my @fOrder = qw/ID First Last eMail Phone BlueTooth_MAC WiFi_MAC/;
+my $fmap   = {
+    ID            => 'u.usrId',
+    First         => 'u.usrFirstName',
+    Last          => 'u.usrLastName',
+    eMail         => 'u.usrEmail',
+    Phone         => 'u.usrPhone',
+    BlueTooth_MAC => 'b.btmaddr',
+    WiFi_MAC      => 'w.wifiaddr',
+};
+my $grid = {};
+
+# Config file
+emit "Loading configuration";
+emit_text "from " . ($opts->{'config-file'} || $CONFIG_FILE) if $opts->{verbose};
+eval {read_config $opts->{'config-file'} || $CONFIG_FILE => $TRAX->{cfg};};
+exit emit_fail {reason => "Configuration file problem: $@"} if $@;
+foreach my $section (keys %{$TRAX->{cfg}}) {
+    foreach my $key (keys %{$TRAX->{cfg}->{$section}}) {
+        $TRAX->{cfg}->{$section}->{$key} =~ s/\s* (?<!\\) \# .*? $//x;    # Decomment line
+    }
+}
+emit_ok;
+
+# Connect to database
+emit "Database Init";
+my $db = new trax::db;
+$db->connect($TRAX->{cfg}->{dbb});
+exit emit_error {reason => "Unable to connect to database: " . $db->error()}
+    if $db->error();
+$db->setup();
+exit emit_error {reason => "Unable to setup database: " . $db->error()}
+    if $db->error();
+$TRAX->{db} = $db;
+emit_ok;
+
+# Load users
+load_users();
+
+# Setup GUI
+my $sx  = 900;                            # 1024
+my $sy  = 640;                            #  768
+my $gui = $TRAX->{gui} = {};
+my $mw  = $gui->{mw} = MainWindow->new(
+    -title  => "trax Roster: Who's Here Now",
+    -width  => $sx,
+    -height => $sy,
+);
+my $hy = 68;
+my $by = 632;
+my $fy = 68;
+
+# -(heading)-
+my $head = $gui->{head} = $mw->Frame(-background => $COLOR_BLACK)
+    ->place(-x => 0, '-y' => 0, -width => $sx, -height => $hy);
+$head->Label(
+    -text       => "trax Roster:",
+    -font       => $FONT_LG,
+    -foreground => $COLOR_ORANGE,
+    -background => $COLOR_BLACK,
+)->pack(-side => 'left', -padx => 13);
+$head->Label(
+    -text       => "Who's Here Now",
+    -font       => $FONT_LG,
+    -foreground => $COLOR_WHITE,
+    -background => $COLOR_BLACK,
+)->pack(-side => 'left', -padx => 13);
+$gui->{timestamp} = $head->Label(
+    -text       => "---",
+    -font       => $FONT_MD,
+    -foreground => $COLOR_ORANGE,
+    -background => $COLOR_BLACK,
+)->pack(-side => 'right', -padx => 13);
+$gui->{clock_timer} = $head->repeat(1000, \&update_time);
+
+# -(body)-
+my $body = $gui->{body} = $mw->Frame(-background => $COLOR_WHITE)
+    ->place(-x => 0, '-y' => $hy + 1, -width => $sx, -height => $sy - $hy - $fy);
+$gui->{blip_timer} = $body->repeat(5000, \&update_roster);
+
+# -(footer)-
+my $foot = $gui->{foot} = $mw->Frame(-background => $COLOR_BLACK)
+    ->place(-x => 0, '-y' => $sy - $fy + 1, -width => $sx, -height => $fy);
+$gui->{quit_btn} = $foot->Button(
+    -text             => "Q",
+    -font             => $FONT_MD,
+    -foreground       => $COLOR_ORANGE,
+    -activeforeground => $COLOR_CYAN,
+    -background       => $COLOR_BLACK,
+    -activebackground => $COLOR_BLACK,
+    -command          => sub {exit 0},
+)->pack(-side => 'right');
+$gui->{mode_str} = "Mode: In";
+$gui->{mode_btn} = $foot->Button(
+    -textvariable     => \$gui->{mode_str},
+    -font             => $FONT_MD,
+    -foreground       => $COLOR_ORANGE,
+    -activeforeground => $COLOR_CYAN,
+    -background       => $COLOR_BLACK,
+    -activebackground => $COLOR_BLACK,
+    -command          => \&toggle_mode,
+)->pack(-side => 'right');
+$gui->{funce_btn} = $foot->Button(
+    -text             => "Users",
+    -font             => $FONT_MD,
+    -foreground       => $COLOR_ORANGE,
+    -activeforeground => $COLOR_CYAN,
+    -background       => $COLOR_BLACK,
+    -activebackground => $COLOR_BLACK,
+    -command          => sub {user_edit();},
+)->pack(-side => 'right');
+
+# Fill in the roster with names
+populate_roster();
+
+emit "Running GUI";
+MainLoop;
+exit 0;    # ...but should never get here
+
+######### O #########
+
+sub load_users {
+    emit "Loading users";
+    $TRAX->{users_by_id}   = {};
+    $TRAX->{users_by_name} = {};
+    my $usrrecs = $db->select("SELECT usrId,usrLastName,usrFirstName FROM users");
+    exit emit_error {reason => "Error selecting users: " . $db->error()}
+        if $db->error();
+    emit_prog scalar(@$usrrecs) . " users";
+    foreach my $rec (@$usrrecs) {
+        my $usrId = $rec->{usrId};
+        my $name  = "$rec->{usrLastName}, $rec->{usrFirstName}";
+
+        #emit_text "$usrId $name";
+        $TRAX->{users_by_id}->{$usrId}  = $name;
+        $TRAX->{users_by_name}->{$name} = $usrId;
+    }
+    emit_ok;
+}
+
+# Populate names in the roster
+sub populate_roster {
+    emit "Populating roster frame";
+    my $gui  = $TRAX->{gui};
+    my $body = $gui->{body};
+
+    my $GC = 6;     # across
+    my $GR = 15;    # down
+
+    # Delete existing roster content, in case we're called again
+    foreach my $kid ($body->children()) {
+        $kid->destroy() if Tk::Exists $kid;
+    }
+
+    # Set min column widths
+    for my $c (0 .. $GC - 1) {
+        $body->gridColumnconfigure($c, -minsize => int(1000 / $GC));
+    }
+
+    ### TODO:  Allow sort by role too (actor, parking, ...)
+    ###  include rolecode in names, ex: "PRK: Smith, Jane" or "ACT: Doe, John"
+
+    my $n = 0;
+    my $ub = $body->{user_buttons} = [];    # indexed by usrId
+    foreach my $name (sort keys %{$TRAX->{users_by_name}}) {
+        my $row = $n % $GR;
+        my $col = int($n / $GR);
+        $n++;
+        my $usrId = $TRAX->{users_by_name}->{$name};
+        $ub->[$usrId] = $body->Button(
+            -text       => $name,
+            -font       => $FONT_SM,
+            -foreground => $COLOR_WHITE,
+            -background => $COLOR_STATE_NO_INFO,
+
+            #   -command      => \&toggle_mode,
+        )->grid(-column => $col, -row => $row, -sticky => 'nsew');
+    }
+
+    # Empty placeholders
+    while ($n < $GC * $GR) {
+        my $row = $n % $GR;
+        my $col = int($n / $GR);
+        $n++;
+        $body->Label(
+            -text       => "---",
+            -font       => $FONT_SM,
+            -foreground => $COLOR_BLACK,
+        )->grid(-column => $col, -row => $row, -sticky => 'nsew');
+    }
+
+}
+
+# Create the "since .. ago" string
+sub since_ago {
+    my $s = int(shift);
+    return "(${s}s ago)" if $s <= 99;
+    my $m = int(($s + 30) / 60);
+    return "(${m}m ago)" if $m <= 99;
+    my $h = int(($s + 1800) / 3600);
+    return "(${h}h ago)" if $h <= 99;
+    my $d = int(($s + 43200) / 86400);
+    return "(${d}d ago)";
+}
+
+# Toggle mode hint
+sub toggle_mode {
+    my $gui = $TRAX->{gui};
+    $TRAX->{mode_hint}
+        = $TRAX->{mode_hint} eq "In"   ? "None"
+        : $TRAX->{mode_hint} eq "None" ? "Out"
+        :                                "In";
+    $gui->{mode_str} = "Mode: $TRAX->{mode_hint}";
+
+    # Rewrite the hint file  ### TODO:  bt scanner may not run on this station!
+    my $bhdir = '/var/run/trax';
+    mkdir $bhdir;    # in case it's not there
+    my $bhfile = "$bhdir/bliphint";
+    open(BH, '>', $bhfile)
+        or die "*** Could not create/replace bliphint file: $!\n";
+    print BH lc($TRAX->{mode_hint});
+    close BH;
+}
+
+# Put date time into header
+sub update_time {
+    my $gui = $TRAX->{gui};
+    $gui->{timestamp}->configure(-text => strftime("%a %d-%b-%Y %H:%M:%S %Z", localtime(time())));
+}
+
+# Update the roster with who's here
+my $X = 0;    #temp, for test
+
+sub update_roster {
+
+    # emit "Roster update";
+    my $gui    = $TRAX->{gui};
+    my $cfg    = $TRAX->{cfg};
+    my $body   = $gui->{body};
+    my $recent = $cfg->{roster}->{recent} || 300;
+    my $awhile = $cfg->{roster}->{awhile} || 3600;
+    my $ub     = $body->{user_buttons};
+
+    # Select the last know blip for each user, within today's partition
+    my $now      = time();
+    my $slice    = tpart($TRAX, $now);
+    my $alpha_ts = isotime($slice->[0]);
+    my $omega_ts = isotime($slice->[1]);
+#<<<
+    my $blips
+        = $db->select("SELECT b1.blipTime, b1.usrId, b1.blipHint"
+                    . "  FROM blips b1"
+                    . " INNER JOIN (SELECT MAX(blipTime) AS maxBlip, usrId"
+                    . "               FROM blips"
+                    . "              WHERE blipTime >= " . $db->quote($alpha_ts)
+                    . "                AND blipTime <= " . $db->quote($omega_ts)
+                    . "              GROUP BY usrId) AS b2"
+                    . "    ON b1.blipTime = b2.maxBlip"
+                    . "      AND b1.usrId = b2.usrId"
+                     );
+#>>>
+    exit emit_error {reason => "Error selecting blips: " . $db->error()}
+        if $db->error();
+
+    # Re-index them by usrId, and compute how long since 'now'
+    my $byuser = {};
+    foreach my $rec (@$blips) {
+        my $usrId = $rec->{usrId};
+        $byuser->{$usrId} = {
+            delta_t  => $now - epochtime($rec->{blipTime}),
+            blipHint => $rec->{blipHint}
+        };
+    }
+
+    # Update the status of each user
+    foreach my $usrId (sort keys %{$TRAX->{users_by_id}}) {
+        if (!exists $byuser->{$usrId}) {
+
+            # User not seen this day
+            my $name = $ub->[$usrId]->cget('-text');
+            $name =~ s/\s+\(\d+\w+\)$//;    # Remove time-since string
+            $ub->[$usrId]->configure(-background => $COLOR_STATE_NO_INFO, -text => $name);
+            next;
+        }
+        my $dt   = $byuser->{$usrId}->{delta_t};
+        my $hint = $byuser->{$usrId}->{blipHint};
+        my $stat = $hint eq 'out' ? 'gone' : 'here';
+
+        my $level
+            = $dt < $recent ? 0
+            : $dt < $awhile ? 1
+            :                 2;
+        my $bg   = $COLOR_STATES_BG->{$stat}->[$level];
+        my $fg   = $COLOR_STATES_FG->{$stat}->[$level];
+        my $name = $ub->[$usrId]->cget('-text');
+        $name =~ s/\s+\(.+?\)$//;    # Remove time-since string
+        $name .= q{ } . since_ago($dt);
+        $ub->[$usrId]->configure(-foreground => $fg, -background => $bg, -text => $name);
+    }
+}
+
+sub user_edit {
+    my $cfg = $TRAX->{cfg};
+    my $db  = $TRAX->{db};
+    my $gui = $TRAX->{gui};
+    my $mw  = $gui->{mw};
+
+    my $pop = $mw->Toplevel(
+        -title  => "Volunteer Information",
+        -width  => 700,
+        -height => 400
+    );
+
+    # Grid titles
+    my $r = 0;
+    my $c = 0;
+    foreach my $ttl (@fOrder) {
+        my $index = $r . q{,} . $c++;
+        $grid->{$index} = $ttl;
+    }
+
+    # Load grid
+    my $sql = "SELECT ";
+    $sql .= join(q{,}, values(%$fmap));
+    $sql
+        .= " FROM users u "
+        . " LEFT OUTER JOIN btmacs b ON u.usrId = b.usrId"
+        . " LEFT OUTER JOIN wifimacs w ON u.usrId = w.usrId"
+        . " GROUP BY u.usrId";
+    print "\nSQL is:\n  $sql\n\n";    #XXX
+    my $usrrecs = $db->select($sql);
+    exit emit_error {reason => "Error selecting user data: " . $db->error()}
+        if $db->error();
+    foreach my $rec (@$usrrecs) {
+        ++$r;
+        $c = 0;
+        foreach my $ttl (@fOrder) {
+            my $index = $r . q{,} . $c++;
+            my $key   = $fmap->{$ttl};
+            $key = $1 if $key =~ m/^\w+\.(\w+)$/;    # Remove u. or b. etc prefix
+            $grid->{$index} = $rec->{$key};
+        }
+    }
+
+    # Table Matrix
+    my $t = $pop->Scrolled(
+        'TableMatrix',
+        -rows      => $r + 2,
+        -cols      => scalar(@fOrder),
+        -width     => scalar(@fOrder),
+        -height    => 10,
+        -titlerows => 1,
+        -titlecols => 1,
+        -variable  => $grid,
+
+        #        -coltagcommand  => \&colSub,
+        -colstretchmode => 'last',
+        -rowstretchmode => 'last',
+        -selectmode     => 'extended',
+        -selecttitles   => 0,
+        -drawmode       => 'slow',
+        -scrollbars     => 'se'
+    );
+    $t->tagConfigure('active', -bg => 'white',       -relief => 'sunken');
+    $t->tagConfigure('title',  -bg => 'lightblue',   -fg     => 'black', -relief => 'sunken');
+    $t->tagConfigure('dis', -state => 'disabled');
+    $t->colWidth(3, 32);
+    $t->colWidth(4, 13);
+    $t->colWidth(5, 18);
+    $t->colWidth(6, 18);
+    $t->pack(-expand => 1, -fill => 'both');
+
+    $pop->Button(
+        -text    => "Close",
+        -command => sub {$pop->destroy},
+    )->pack();
+
+    $t->focus;
+
+}
+
+sub add_user {
+    my $pop  = shift;
+    my $user = shift;
+
+    my $db = $TRAX->{db};
+    my $sql
+        = "INSERT INTO users SET"
+        . " usrLastName="
+        . $db->quote($user->{last})
+        . ",usrFirstName="
+        . $db->quote($user->{first})
+        . ",usrEmail="
+        . $db->quote($user->{email})
+        . ",usrPhone="
+        . $db->quote($user->{phone}) . ";";
+    $db->insert($sql);
+    if ($db->error) {
+        emit_warn("DB error: " . $db->error);
+    }
+
+    load_users();
+    populate_roster();
+
+    $pop->destroy;
+}
+
+__END__
+
+=head1 NAME
+
+trax-roster - Display a roster of who's here
+
+=head1 SYNOPSIS
+
+ trax-roster [options]
+
+ Options:
+  -c    --config-file   Use this config file instead of /etc/trax/trax.conf
+  -h    --help          Usage summary
+  -v    --verbose       More verbose output
+
+=head1 DESCRIPTION
+
+A trax GUI to display user presence information.
+
+=cut
+

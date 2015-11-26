@@ -1,0 +1,7 @@
+trax (0.1) unstable; urgency=low
+
+  * trax - Manage and track your staff.
+    This is a time clock, scheduler, and employee directory system.
+    Initial prototype.
+
+ -- Steve Roscio <steve@HauntedMines.org>  Sun, 09 Jan 2011 16:20:00 -0700

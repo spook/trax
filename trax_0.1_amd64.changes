@@ -1,0 +1,24 @@
+Format: 1.8
+Date: Sun, 09 Jan 2011 16:20:00 -0700
+Source: trax
+Binary: trax
+Architecture: all
+Version: 0.1
+Distribution: unstable
+Urgency: low
+Maintainer: Steve Roscio [steve@HauntedMines.org]
+Changed-By: Steve Roscio <steve@HauntedMines.org>
+Description: 
+ trax       - Time tracking and staff manager system.
+Changes: 
+ trax (0.1) unstable; urgency=low
+ .
+   * trax - Manage and track your staff.
+     This is a time clock, scheduler, and employee directory system.
+     Initial prototype.
+Checksums-Sha1: 
+ 564a7e1417f9446e9b1125d5fa79862ad9dcdacf 22024 trax_0.1_all.deb
+Checksums-Sha256: 
+ b0f5cab1d5558dbf9058ecd211eb99ae248b9d62faba07a2843f96e26fb2b7f1 22024 trax_0.1_all.deb
+Files: 
+ df6ba8c1316f7810300689d3629f281c 22024 office optional trax_0.1_all.deb
